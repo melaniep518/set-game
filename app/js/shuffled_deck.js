@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {cards} from "./card_deck.js";
 
 const Cards = React.createClass({
-  shuffle: function(cards) {
+  shuffle(cards) {
     let shuffled = [];
     let keys = Object.keys(cards);
     for(let i = keys.length; i > 0; i--) {
@@ -13,7 +13,14 @@ const Cards = React.createClass({
       keys.splice(randomInd, 1);
     }
     return shuffled;
-  }
-})
+  },
 
-export {Cards}
+  render() {
+    console.log(this.shuffle(cards));
+    return (
+      <div></div>
+    )
+  }
+});
+
+export {Cards};

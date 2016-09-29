@@ -6,7 +6,7 @@ let Game = React.createClass({
   },
   render() {
     return (
-
+      <div></div>
     )
   }
 })
