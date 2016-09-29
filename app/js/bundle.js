@@ -60,7 +60,7 @@
 	
 	var _card_deck = __webpack_require__(221);
 	
-	var _shuffled_deck = __webpack_require__(173);
+	var _shuffled_deck = __webpack_require__(222);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -70,6 +70,11 @@
 	
 	var App = _react2.default.createClass({
 	  displayName: "App",
+	
+	  // getInitialState() {
+	  //   deck: 
+	  // },
+	
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "div",
@@ -124,7 +129,8 @@
 	        "button",
 	        { onClick: self.submitMessage },
 	        "Send message"
-	      )
+	      ),
+	      _react2.default.createElement(_shuffled_deck.Cards, null)
 	    );
 	  }
 	});
@@ -29556,7 +29562,7 @@
 	exports.cards = cards;
 
 /***/ },
-/* 173 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29564,7 +29570,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Shuffled = undefined;
+	exports.Cards = undefined;
 	
 	var _react = __webpack_require__(1);
 	
@@ -29574,14 +29580,13 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _card_deck = __webpack_require__(172);
+	var _card_deck = __webpack_require__(221);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Shuffled = _react2.default.createClass({
-	  displayName: "Shuffled",
-	
-	  render: function render(cards) {
+	var Cards = _react2.default.createClass({
+	  displayName: "Cards",
+	  shuffle: function shuffle(cards) {
 	    var shuffled = [];
 	    var keys = Object.keys(cards);
 	    for (var i = keys.length; i > 0; i--) {
@@ -29591,10 +29596,14 @@
 	      keys.splice(randomInd, 1);
 	    }
 	    return shuffled;
+	  },
+	  render: function render() {
+	    console.log(this.shuffle(_card_deck.cards));
+	    return _react2.default.createElement("div", null);
 	  }
 	});
 	
-	exports.Shuffled = Shuffled;
+	exports.Cards = Cards;
 
 /***/ }
 /******/ ]);
