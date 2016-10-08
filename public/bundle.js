@@ -59,6 +59,8 @@
 	var _app = __webpack_require__(235);
 	
 	var _app2 = _interopRequireDefault(_app);
+
+	var _shuffled_deck = __webpack_require__(222);
 	
 	var _WaitingForPlayers = __webpack_require__(286);
 	
@@ -69,6 +71,73 @@
 	var _Game2 = _interopRequireDefault(_Game);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var App = _react2.default.createClass({
+	  displayName: "App",
+	
+	  // getInitialState() {
+	  //   deck: 
+	  // },
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "Set Game"
+	      ),
+	      _react2.default.createElement(ChatBar, null)
+	    );
+	  }
+	});
+	
+	var ChatBar = _react2.default.createClass({
+	  displayName: "ChatBar",
+	  getInitialState: function getInitialState() {
+	    return {
+	      messages: [],
+	      socket: socket };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var self = this;
+	    this.state.socket.on('received message', function (msg) {
+	      console.log(msg);
+	      self.setState({ messages: self.state.messages.concat(msg) });
+	    });
+	  },
+	  submitMessage: function submitMessage() {
+	    var message = document.getElementById('message').value;
+	    this.state.socket.emit('new message', message);
+	  },
+	  render: function render() {
+	    var self = this;
+	    var messages = this.state.messages.map(function (msg, i) {
+	      return _react2.default.createElement(
+	        "li",
+	        { key: i },
+	        msg
+	      );
+	    });
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "ul",
+	        null,
+	        messages
+	      ),
+	      _react2.default.createElement("input", { id: "message", type: "text" }),
+	      _react2.default.createElement(
+	        "button",
+	        { onClick: self.submitMessage },
+	        "Send message"
+	      ),
+	      _react2.default.createElement(_shuffled_deck.Cards, null)
+	    );
+	  }
+	});
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
@@ -35562,6 +35631,8 @@
 
 /***/ },
 /* 292 */
+
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -35569,7 +35640,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
 	exports.shuffle = undefined;
+
 	
 	var _react = __webpack_require__(1);
 	
@@ -35592,6 +35665,7 @@
 	}
 	
 	exports.shuffle = shuffle;
+
 
 /***/ }
 /******/ ]);
