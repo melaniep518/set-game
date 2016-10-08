@@ -4,8 +4,10 @@ import io from 'socket.io-client';
 import cards from './parts/card_deck' 
 import {shuffle} from './parts/shuffled_deck.js'
 
-
+console.log('CARDS:', cards);
+console.log('SHUFFLED:', shuffle(cards));
 //import "../css/style.css";
+
 
 const App = React.createClass({
   getInitialState(){
