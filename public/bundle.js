@@ -27125,10 +27125,11 @@
 	
 	var _card_deck2 = _interopRequireDefault(_card_deck);
 	
+	var _shuffled_deck = __webpack_require__(292);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	//import "../css/style.css";
-	
 	
 	var App = _react2.default.createClass({
 	  displayName: 'App',
@@ -35558,6 +35559,39 @@
 	  }
 	});
 	exports.default = ChatBar;
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.shuffle = undefined;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _card_deck = __webpack_require__(285);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function shuffle(cards) {
+	  var cardsCopy = cards.slice();
+	  var shuffled = [];
+	  for (var i = cardsCopy.length; i > 0; i--) {
+	    var randomInd = Math.floor(Math.random() * cardsCopy.length);
+	    var randomCard = cardsCopy[randomInd];
+	    shuffled.push(randomCard);
+	    cardsCopy.splice(randomInd, 1);
+	  }
+	  return shuffled;
+	}
+	
+	exports.shuffle = shuffle;
 
 /***/ }
 /******/ ]);

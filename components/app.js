@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import io from 'socket.io-client';
 import cards from './parts/card_deck' 
+import {shuffle} from './parts/shuffled_deck.js'
 
 
 //import "../css/style.css";
-
 
 const App = React.createClass({
   getInitialState(){
